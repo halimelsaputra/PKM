@@ -17,7 +17,6 @@ import {
 } from '@/lib/variant-1/utils';
 import { cylinderVertex, cylinderFragment, particleVertex, particleFragment } from '@/lib/variant-1/shaders';
 import Loader from '@/components/loader';
-import { CodropsFrame } from '@/components/codrops-frame';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger, CustomEase, ScrollSmoother);
