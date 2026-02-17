@@ -454,20 +454,20 @@ export function CylinderCarousel() {
             ref={(el) => {
               textRefs.current[index] = el;
             }}
-            className={`absolute text-center opacity-0 max-md:w-full ${getPositionClasses(perspective.position)}`}
+            className={`absolute text-center opacity-0 max-md:w-full max-md:px-4 ${perspective.timeline ? 'max-md:flex max-md:flex-col max-md:items-start max-md:text-left' : ''} ${getPositionClasses(perspective.position)}`}
           >
-            <h2 className="text-7xl font-[300] max-md:text-3xl leading-[0.8]">{perspective.title}</h2>
+            <h2 className="text-7xl font-[300] max-md:text-2xl leading-[0.8] max-md:leading-tight max-md:order-2 max-md:mt-4">{perspective.title}</h2>
             {perspective.description && (
               <p className="text-2xl font-[300] max-md:text-base opacity-50 mt-2">{perspective.description}</p>
             )}
             {perspective.timeline && (
-              <div className="absolute right-240 top-1/2 -translate-y-1/2 text-left max-md:left-2 max-w-md max-md:max-w-xs">
-                <h3 className="text-4xl font-[400] max-md:text-2xl mb-6 opacity-80 text-center">Timeline</h3>
-                <div className="flex justify-center gap-16 max-md:gap-6">
+              <div className="absolute right-240 top-1/2 -translate-y-1/2 text-left max-w-md max-md:order-1 max-md:static max-md:mt-6 max-md:max-w-none max-md:w-full max-md:translate-y-0">
+                <h3 className="text-4xl font-[400] max-md:text-xl mb-6 max-md:mb-4 opacity-80 text-center">Timeline</h3>
+                <div className="flex justify-center gap-16 max-md:gap-4 max-md:flex-col max-md:items-start max-md:pl-2">
                   <div className="flex flex-col gap-4 text-left">
                     {perspective.timeline.left.items.map((item, i) => (
                       <div key={i} className="flex flex-col">
-                        <span className="text-lg font-[400] max-md:text-sm opacity-70">{item.label}</span>
+                        <span className="text-lg font-[400] max-md:text-base opacity-70">{item.label}</span>
                         <span className="text-base font-[300] max-md:text-xs opacity-40">{item.date}</span>
                       </div>
                     ))}
@@ -475,7 +475,7 @@ export function CylinderCarousel() {
                   <div className="flex flex-col gap-4 text-left">
                     {perspective.timeline.right.items.map((item, i) => (
                       <div key={i} className="flex flex-col">
-                        <span className="text-lg font-[400] max-md:text-sm opacity-70">{item.label}</span>
+                        <span className="text-lg font-[400] max-md:text-base opacity-70">{item.label}</span>
                         <span className="text-base font-[300] max-md:text-xs opacity-40">{item.date}</span>
                       </div>
                     ))}
@@ -484,15 +484,15 @@ export function CylinderCarousel() {
               </div>
             )}
             {perspective.links && perspective.links.length > 0 && (
-              <div className="flex justify-center gap-20 mt-8 max-md:gap-10 max-md:mt-6 pointer-events-auto">
+              <div className="flex justify-center gap-20 mt-8 max-md:order-3 max-md:gap-5 max-md:mt-6 max-md:flex-col max-md:items-start max-md:text-left max-md:w-full max-md:px-2 pointer-events-auto">
                 {perspective.links.map((link, i) => (
-                  <div key={i} className="flex flex-col items-center">
-                    <span className="text-4xl font-[400] max-md:text-2xl">{link.label}</span>
+                  <div key={i} className="flex flex-col items-center max-md:items-start">
+                    <span className="text-4xl font-[400] max-md:text-xl">{link.label}</span>
                     <a
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-2xl font-[300] max-md:text-base opacity-50 mt-2 underline hover:opacity-80 transition-opacity"
+                      className="text-2xl font-[300] max-md:text-sm opacity-50 mt-2 underline hover:opacity-80 transition-opacity break-all"
                     >
                       {link.url}
                     </a>
@@ -504,10 +504,10 @@ export function CylinderCarousel() {
         ))}
       </div>
 
-      <div className="fixed bottom-20 right-40 z-30 pointer-events-auto max-md:bottom-16 max-md:right-4 opacity-0" id="about-us-btn">
+      <div className="fixed bottom-20 right-40 z-30 pointer-events-auto max-md:bottom-10 max-md:left-1/2 max-md:-translate-x-1/2 max-md:right-auto opacity-0" id="about-us-btn">
         <a
           href="#/about-us"
-          className="border border-white/50 text-white px-8 py-3 text-2xl max-md:text-lg max-md:px-5 max-md:py-2 hover:bg-white/10 transition-all duration-300"
+          className="border border-white/50 text-white px-8 py-3 text-2xl max-md:text-base max-md:px-5 max-md:py-2 hover:bg-white/10 transition-all duration-300"
         >
           About Us
         </a>
@@ -538,3 +538,5 @@ export function CylinderCarousel() {
     </>
   );
 }
+
+
